@@ -7,12 +7,16 @@ This is the three-tiered version of the Bad Bank project for the MIT xPro certif
 ## Installation
 1. run a MongoDB Docker image.
     - `docker run -p 27017:2701 --name badbank -d mongoDB`
+
 2. clone the Bad Bank repository.
     - `git clone https://github.com/dorenel/bad-bank-full-stack.git`
+
 3. build the project.
     - `npm install`
+
 4. start the server.
     - `node index.js`
+
 5. navigate to the GUI.
     - point the broswer to `http://localhost:3000`
 
@@ -25,6 +29,7 @@ All data screen:
 
 ## Technologies
 ***Front End*** - HTML, JavaScript, Bootstrap, React
+
 ***Back End*** - Express, MongoDB, Docker, Firebase Authentication
 
 ## Features
