@@ -56,7 +56,7 @@ const AccountStatus = ({setShowForm}) => {
 
     return (
         <>
-        <h5>Account created Successfully.</h5>
+        <h5>Account created successfully.</h5>
         <button type="button" className="btn btn-light" onClick={handleAccountReset}>Create Another Account</button>
         </>
     );

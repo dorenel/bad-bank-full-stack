@@ -24,18 +24,50 @@ This is the three-tiered version of the Bad Bank project for the MIT xPro certif
 Home screen:
 ![home.png](./assets/home.png)
 
+Create account screen:
+![home.png](./assets/account.png)
+
+Login screen:
+![home.png](./assets/login.png)
+
+Deposit screen:
+![home.png](./assets/deposit.png)
+
+Withdraw screen:
+![home.png](./assets/withdraw.png)
+
+Check balance screen:
+![home.png](./assets/balance.png)
+
 All data screen:
 ![data.png](./assets/data.png)
 
 ## Technologies
-***Front End*** - HTML, JavaScript, Bootstrap, React
+***Front End***
+- HTML
+- JavaScript
+- Bootstrap
+- React
 
-***Back End*** - Express, MongoDB, Docker, Firebase Authentication
+***Back End***
+- Express
+- MongoDB
+- Docker
+- Firebase (Authentication)
 
 ## Features
-***Current Features*** - users can create accounts, login, make deposits, withdraw money, and list all the existing accounts.
+***Current Features***
+- create accounts
+- login
+- make deposits
+- make withdrawals
+- check balance
+- list all the existing accounts.
 
-***Future Roadmap*** - authentications to make the application secure.
+***Future Roadmap***
+- authentication
+- authorization
+- stylize the app
 
 ## License
 

@@ -1,14 +1,17 @@
 import mongodb from 'mongodb';
 
 const MongoClient = mongodb.MongoClient;
+const ObjectId = mongodb.ObjectId;
 
 const url = 'mongodb://localhost:27017';
 const client = new MongoClient(url, {useUnifiedTopology: true});
 
-let dbConnection;
+let dbCollection;
 
 client.connect((err, db) => {
-    dbConnection = db.db('myproject');
+    const dbConnection = db.db('myproject');
+    dbCollection = dbConnection.collection('users');
+
     console.log("Connected to DB!");
 });
 
@@ -17,9 +20,62 @@ const create = (name, email, password) => {
         
         const doc = {name: name, email: email, password: password, balance: 0};
 
-        dbConnection
-            .collection('users')
+        dbCollection
             .insertOne(doc, (err, result) => {
+                err ? reject(err) : resolve(result);
+            });
+    });
+};
+
+const login = (email, password) => {
+    const query = {email: email, password: password};
+
+    return new Promise((resolve, reject) => {
+        dbCollection
+            .find(query)
+            .toArray((err, result) => {
+                if (err || result.length == 0) 
+                    reject("Login failed.");
+                else
+                    resolve(result);
+            });
+    });
+};
+
+const deposit = (userId, amount) => {
+    const amountInt = parseInt(amount);
+    const query = {_id: ObjectId(userId)};
+    const value = {$inc: {balance: amountInt}};
+
+    return new Promise((resolve, reject) => {
+        dbCollection
+            .findOneAndUpdate(query, value, (err, result) => {
+                err ? reject(err) :  resolve(result);
+            });
+    });
+};
+
+const withdraw = (userId, amount) => {
+    const amountInt = parseInt(amount) * -1;
+    const query = {_id: ObjectId(userId)};
+    const value = {$inc: {balance: amountInt}};
+
+    return new Promise((resolve, reject) => {
+        dbCollection
+            .findOneAndUpdate(query, value, (err, result) => {
+                err ? reject(err) : resolve(result);
+            });
+    });
+};
+
+const balance = (userId) => {
+    const query = {_id: ObjectId(userId)};
+    const projection = {balance: 1};
+
+    return new Promise ((resolve, reject) => {
+        dbCollection
+            .find(query, projection)
+            .toArray((err, result) => {
                 err ? reject(err) : resolve(result);
             });
     });
@@ -27,8 +83,7 @@ const create = (name, email, password) => {
 
 const all = () => {
     return new Promise((resolve, reject) => {
-        dbConnection
-            .collection('users')
+        dbCollection
             .find()
             .toArray((err, result) => {
                 err ? reject(err) : resolve(result);
@@ -36,4 +91,4 @@ const all = () => {
     });
 };
 
-export default {create, all};
+export default {create, login, deposit, withdraw, balance, all};
