@@ -22,24 +22,31 @@ This is the three-tiered version of the Bad Bank project for the MIT xPro certif
 
 ## Screenshots
 Home screen:
+
 ![home.png](./assets/home.png)
 
 Create account screen:
+
 ![home.png](./assets/account.png)
 
 Login screen:
+
 ![home.png](./assets/login.png)
 
 Deposit screen:
+
 ![home.png](./assets/deposit.png)
 
 Withdraw screen:
+
 ![home.png](./assets/withdraw.png)
 
 Check balance screen:
+
 ![home.png](./assets/balance.png)
 
 All data screen:
+
 ![data.png](./assets/data.png)
 
 ## Technologies
